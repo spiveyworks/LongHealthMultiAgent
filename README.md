@@ -1,5 +1,7 @@
 # Long Health Coach Multi-Agent Workflow
 
+**Disclaimer:** Experimental prototype for personal use only. Not health advice or medical guidance. Consult a qualified physician before making health decisions.
+
 Self-directed, interruptible multi-agent system for longitudinal health and longevity coaching. Implements the specification provided for the Project Manager (orchestrator), Data Scientist, Medical Professional, Hypothesis-Driven Researcher, and Health & Longevity Coach agents.
 
 ## Features
@@ -27,6 +29,12 @@ Self-directed, interruptible multi-agent system for longitudinal health and long
    python -m long_health_coach.main --subject-id demo --run-id run001 --source data/labs.csv --source data/lifestyle.csv
    ```
 4. Artifacts (timeline parquet, QC report, figures, coaching plan, weekly briefing, event log) are written to the `artifacts/` directory by default.
+
+## LLM Runtime
+
+- This workflow runs as a local Python pipeline; it is not designed to be driven by Codex or another external agent at runtime.
+- There is no built-in LLM provider integration; agent outputs are deterministic. To use an LLM, add a provider client in the agent modules and supply the necessary API keys or environment config.
+- You can also run the pipeline from an external agent (e.g., Codex or Claude Code) to interpret generated artifacts and iterate on prompts, analyses, or coaching plans.
 
 ## Repository Layout
 
