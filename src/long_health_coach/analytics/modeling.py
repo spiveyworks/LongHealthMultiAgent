@@ -115,13 +115,45 @@ def _select_variables(columns: Iterable[str], preferences: Dict[str, object]) ->
     if exposures_pref:
         exposures = [col for col in exposures_pref if col in columns]
     else:
-        exposures = [col for col in columns if any(keyword in col.lower() for keyword in ["exercise", "activity", "supplement", "steps"])]
+        exposure_keywords = [
+            "exercise",
+            "activity",
+            "supplement",
+            "steps",
+            "dietary",
+            "energy",
+            "protein",
+            "fat",
+            "carb",
+            "fiber",
+            "water",
+            "omega",
+            "brocco",
+            "krill",
+            "fish oil",
+        ]
+        exposures = [col for col in columns if any(keyword in col.lower() for keyword in exposure_keywords)]
         if not exposures:
             exposures = columns[: max(1, len(columns) // 3)]
     if outcomes_pref:
         outcomes = [col for col in outcomes_pref if col in columns]
     else:
-        outcomes = [col for col in columns if any(keyword in col.lower() for keyword in ["pace", "glucose", "chol", "sleep"])]
+        outcome_keywords = [
+            "pace",
+            "glucose",
+            "chol",
+            "a1c",
+            "crp",
+            "vo2",
+            "blood pressure",
+            "body mass",
+            "body fat",
+            "ldl",
+            "hdl",
+            "triglycerides",
+            "sleep",
+        ]
+        outcomes = [col for col in columns if any(keyword in col.lower() for keyword in outcome_keywords)]
         if not outcomes:
             outcomes = columns
     exposures = [col for col in exposures if col not in outcomes]

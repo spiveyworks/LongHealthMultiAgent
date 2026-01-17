@@ -71,7 +71,15 @@ def _compute_trends(df: pd.DataFrame) -> pd.DataFrame:
             continue
         x = (group["measurement_date"] - group["measurement_date"].min()).dt.days.values.reshape(-1, 1)
         y = group["value"].values
-        slope = np.polyfit(x.flatten(), y, 1)[0] if n >= 2 else 0.0
+        finite_mask = np.isfinite(y)
+        if finite_mask.sum() < 2:
+            continue
+        x = x.flatten()[finite_mask]
+        y = y[finite_mask]
+        try:
+            slope = np.polyfit(x, y, 1)[0] if len(y) >= 2 else 0.0
+        except np.linalg.LinAlgError:
+            continue
         trend_direction = "increasing" if slope > 0 else "decreasing" if slope < 0 else "flat"
         records.append(
             {
