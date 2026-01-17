@@ -1,0 +1,11 @@
+measurement_date,variable_name,value,unit
+2025-02-01,Body Mass,180.4,lb
+2025-02-01,Body Fat Percentage,0.182,fraction
+2025-02-01,Blood Pressure Systolic - Morning,118,mmHg
+2025-02-01,Blood Pressure Diastolic - Morning,74,mmHg
+2025-02-01,Resting Heart Rate,57,bpm
+2025-02-01,Respiratory Rate,13.0,breaths/min
+2025-02-01,VO2 Max,41.5,mL/kg/min
+2025-02-02,Active Energy Burned,520,kcal
+2025-02-02,Daily Average Dietary Protein,125,g
+2025-02-02,Daily Average Dietary Fiber,24,g
